@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blue Ocean Seafood | Importadora de Mariscos</title>
+  <meta name="description" content="Blue Ocean Seafood – Importación y distribución de camarón y mariscos de calidad premium." />
+  <meta name="keywords" content="camarón, mariscos, importación, Guatemala, seafood, jaiba, filetes" />
+  <meta name="author" content="Blue Ocean Seafood" />
+  <meta property="og:title" content="Blue Ocean Seafood | Importadora de Mariscos Premium" />
+  <meta property="og:description" content="Camarón y mariscos de calidad certificada con logística refrigerada garantizada." />
+  <meta property="og:type" content="business.business" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --brand-900:#061f33;
+      --brand-800:#082b45;
+      --brand-700:#0a3a5a;
+      --brand-600:#0f4f78;
+      --brand-500:#1e6ea1;
+      --brand-300:#6fb6e5;
+      --white:#ffffff;
+      --gray-100:rgba(255,255,255,.85);
+      --shadow-xl:0 20px 50px rgba(0,0,0,.35);
+      --shadow:0 10px 30px rgba(0,0,0,.2);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;
+      padding:0;
+      font-family:Outfit,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif;
+      color:#0b1620;
+      background:#0b1320;
+    }
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1200px,92%);margin-inline:auto}
+    .btn{
+      display:inline-block;
+      padding:14px 22px;
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--brand-600),var(--brand-500));
+      color:#fff;
+      font-weight:700;
+      box-shadow:var(--shadow);
+      letter-spacing:.3px;
+      transition:.25s ease;
+    }
+    .btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
+    .btn-outline{background:transparent;color:#d8efff;border:2px solid rgba(255,255,255,.6)}
+
+    header{
+      position:fixed;
+      top:0;left:0;right:0;
+      z-index:60;
+      background:rgba(8,20,40,.25);
+      backdrop-filter:blur(10px) saturate(150%);
+      border-bottom:1px solid rgba(255,255,255,.08)
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;gap:14px;align-items:center}
+    .brand h1{font-size:18px;line-height:1;margin:0;color:#eaf6ff}
+    .brand small{display:block;color:#b8d8f3;font-size:11px;letter-spacing:.6px}
+    .nav-links{display:flex;gap:28px;align-items:center}
+    .nav-links a{font-weight:600;color:#d7ecff}
+    .nav-links a:hover{color:#fff}
+    #menu-toggle{display:none}
+    .menu-btn{display:none}
+    @media(max-width:900px){
+      .menu-btn{display:block}
+      .nav-links{
+        position:fixed;
+        inset:72px 16px auto 16px;
+        display:grid;
+        padding:16px;
+        border-radius:var(--radius);
+        background:rgba(10,25,45,.9);
+        box-shadow:var(--shadow-xl);
+        transform:translateY(-20px);
+        opacity:0;
+        pointer-events:none;
+        transition:.25s;
+      }
+      #menu-toggle:checked ~ .nav .nav-links{
+        transform:none;
+        opacity:1;
+        pointer-events:auto;
+      }
+    }
+
+    /* HERO con carrusel (solo CSS) */
+    .hero{
+      min-height:88vh;
+      position:relative;
+      overflow:hidden;
+      display:grid;
+      place-items:center;
+    }
+    .hero-slider{
+      position:absolute;
+      inset:0;
+      z-index:0;
+      overflow:hidden;
+    }
+    .hero-slide{
+      position:absolute;
+      inset:0;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      transform:scale(1.03);
+      opacity:0;
+      animation:heroFade 14s infinite ease-in-out;
+    }
+    .hero-slide.slide-1{
+      background-image:url('bodega-blue-ocean.jpeg');
+      animation-delay:0s;
+    }
+    .hero-slide.slide-2{
+      background-image:url('afuera-blue-ocean.jpeg');
+      animation-delay:7s;
+    }
+    @keyframes heroFade{
+      0%,40%{opacity:1;}
+      50%,100%{opacity:0;}
+    }
+    .hero-overlay{
+      position:absolute;
+      inset:0;
+      z-index:1;
+      background:
+        radial-gradient(1000px 400px at 50% 10%, rgba(30,110,161,.45), transparent 40%),
+        linear-gradient(180deg, rgba(2,8,23,.6) 0%, rgba(2,8,23,.75) 50%, rgba(2,8,23,.95) 100%);
+    }
+    .hero-inner{
+      position:relative;
+      z-index:2;
+      padding:110px 0 64px;
+    }
+    .headline{
+      color:#eaf6ff;
+      font-size:clamp(36px,5vw,60px);
+      line-height:1.05;
+      margin:12px 0;
+      text-shadow:0 8px 30px rgba(0,0,0,.45);
+    }
+    .subtitle{
+      color:#cde8ff;
+      font-size:clamp(16px,2vw,18px);
+      max-width:720px;
+    }
+    .badges{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+    .tag{
+      padding:6px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.14);
+      color:#eaf6ff;
+      font-weight:700;
+      letter-spacing:.4px;
+      font-size:12px;
+      border:1px solid rgba(255,255,255,.22);
+    }
+
+    section{
+      padding:80px 0;
+      background:linear-gradient(180deg, rgba(2,8,23,1) 0%, rgba(3,14,32,1) 100%);
+    }
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:18px;
+      padding:24px;
+      box-shadow:var(--shadow);
+    }
+    .section-title{color:#d7ecff;margin:0 0 6px}
+    .section-sub{color:#8fbbe0;margin:0 0 22px}
+
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .features .card h3{color:#eaf6ff;margin:6px 0}
+    .features .card p{color:#bcd8ef;margin:0}
+    @media(max-width:900px){.features{grid-template-columns:1fr}}
+
+    .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .product{overflow:hidden}
+    .product img{aspect-ratio:4/3;object-fit:cover;border-radius:14px}
+    .product .info{padding:16px}
+    .badge{
+      font-size:11px;
+      font-weight:800;
+      color:#dbeeff;
+      background:rgba(255,255,255,.12);
+      padding:6px 10px;
+      border:1px solid rgba(255,255,255,.2);
+      border-radius:999px;
+    }
+    .price{font-weight:800;color:#eaf6ff}
+    @media(max-width:900px){.product-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:640px){.product-grid{grid-template-columns:1fr}}
+
+    /* Carrusel para "Filetes selectos" */
+    .filete-slider{
+      position:relative;
+      border-radius:14px;
+      overflow:hidden;
+      aspect-ratio:4/3;
+    }
+    .filete-slide{
+      position:absolute;
+      inset:0;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      transform:scale(1.03);
+      opacity:0;
+      animation:fileteFade 6s infinite ease-in-out; /* 3s cada imagen */
+    }
+    .filete-slide.slide-1{
+      background-image:url('enfilete.jpeg');
+      animation-delay:0s;
+    }
+    .filete-slide.slide-2{
+      background-image:url('robaloentero.jpeg');
+      animation-delay:3s;
+    }
+    @keyframes fileteFade{
+      0%,40%{opacity:1;}
+      50%,100%{opacity:0;}
+    }
+
+    /* Carrusel para "Camarón entero" */
+    .camaron-slider{
+      position:relative;
+      border-radius:14px;
+      overflow:hidden;
+      aspect-ratio:4/3;
+    }
+    .camaron-slide{
+      position:absolute;
+      inset:0;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      transform:scale(1.03);
+      opacity:0;
+      animation:fileteFade 6s infinite ease-in-out; /* reutiliza misma animación */
+    }
+    .camaron-slide.slide-1{
+      background-image:url('cajacamaron.jpeg');
+      animation-delay:0s;
+    }
+    .camaron-slide.slide-2{
+      background-image:url('camarondestapato.jpeg');
+      animation-delay:3s;
+    }
+
+    .split{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:center}
+    @media(max-width:900px){.split{grid-template-columns:1fr}}
+
+    .cta{
+      background:linear-gradient(135deg, rgba(30,110,161,.35), rgba(10,58,90,.6));
+      padding:90px 0;
+    }
+    .cta-box{
+      display:grid;
+      grid-template-columns:1.4fr .8fr;
+      gap:24px;
+      align-items:center;
+    }
+    @media(max-width:900px){.cta-box{grid-template-columns:1fr}}
+
+    footer{
+      padding:42px 0;
+      background:#050a12;
+      color:#b7d2ea;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+    .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:22px}
+    @media(max-width:900px){.foot-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:640px){.foot-grid{grid-template-columns:1fr}}
+
+    /* Botón flotante WhatsApp */
+    .whatsapp-fab{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:70;
+      width:56px;
+      height:56px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:#25D366;
+      box-shadow:0 12px 30px rgba(0,0,0,.3);
+    }
+    .whatsapp-fab svg{width:28px;height:28px;fill:#fff}
+    .whatsapp-fab:hover{transform:translateY(-2px)}
+
+    /* Scroll animations */
+    .fade-in{opacity:0;transform:translateY(30px);animation:fadeInUp .6s ease-out forwards}
+    @keyframes fadeInUp{
+      to{opacity:1;transform:translateY(0)}
+    }
+    
+    /* Testimonios */
+    .testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .testimonial-card{
+      background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:18px;
+      padding:24px;
+      box-shadow:var(--shadow);
+    }
+    .testimonial-card .stars{color:#ffc107;font-size:14px;margin-bottom:8px}
+    .testimonial-card p{color:#cde8ff;margin:8px 0 12px;font-style:italic}
+    .testimonial-card .author{color:#eaf6ff;font-weight:700;font-size:13px}
+    .testimonial-card .role{color:#8fbbe0;font-size:12px}
+    @media(max-width:900px){.testimonials{grid-template-columns:1fr}}
+
+    /* Redes sociales */
+    .social-links{display:flex;gap:12px;margin-top:12px}
+    .social-links a{
+      display:inline-flex;align-items:center;justify-content:center;
+      width:40px;height:40px;border-radius:50%;
+      background:rgba(255,255,255,.1);
+      border:1px solid rgba(255,255,255,.2);
+      transition:.25s ease;
+    }
+    .social-links a:hover{background:rgba(255,255,255,.2);transform:translateY(-2px)}
+
+    /* FAQ */
+    .faq-container{display:grid;gap:12px}
+    .faq-item{
+      background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:12px;
+      overflow:hidden;
+    }
+    .faq-question{
+      padding:18px;color:#eaf6ff;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:.25s;user-select:none;
+    }
+    .faq-question:hover{background:rgba(255,255,255,.08)}
+    .faq-question::after{content:"▼";transition:.3s;font-size:12px}
+    .faq-item.active .faq-question::after{transform:rotate(-180deg)}
+    .faq-answer{
+      max-height:0;overflow:hidden;transition:max-height .3s ease;background:rgba(255,255,255,.03);padding:0 18px;color:#cde8ff;
+    }
+    .faq-item.active .faq-answer{
+      max-height:200px;padding:18px;
+    }
+
+    /* Stats/Contadores */
+    .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:30px}
+    .stat-box{text-align:center;padding:20px}
+    .stat-number{font-size:36px;font-weight:800;color:#6fb6e5;margin-bottom:8px}
+    .stat-label{color:#cde8ff;font-size:13px}
+    @media(max-width:900px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+
+    /* Lightbox */
+    .lightbox{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.9);z-index:100;place-items:center}
+    .lightbox.active{display:grid}
+    .lightbox-content{position:relative;max-width:90vw;max-height:90vh}
+    .lightbox-img{width:100%;height:100%;object-fit:contain}
+    .lightbox-close{position:absolute;top:20px;right:20px;width:40px;height:40px;background:rgba(255,255,255,.2);border:none;color:#fff;font-size:24px;cursor:pointer;border-radius:50%;z-index:101;transition:.25s}
+    .lightbox-close:hover{background:rgba(255,255,255,.3)}
+    .product img{cursor:pointer}
+
+    /* Popup Newsletter */
+    .newsletter-popup{
+      position:fixed;bottom:80px;right:18px;z-index:65;background:linear-gradient(135deg,var(--brand-600),var(--brand-500));
+      border-radius:var(--radius);padding:20px;box-shadow:var(--shadow-xl);max-width:300px;animation:slideUp .4s ease;
+    }
+    @keyframes slideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+    .newsletter-popup h4{margin:0 0 8px;color:#fff}
+    .newsletter-popup p{margin:0 0 12px;color:rgba(255,255,255,.9);font-size:13px}
+    .newsletter-popup input{width:100%;padding:10px;border:none;border-radius:8px;margin-bottom:8px;color:#0a3a5a}
+    .newsletter-popup button{width:100%;padding:10px;background:#fff;color:#0a3a5a;border:none;border-radius:8px;font-weight:700;cursor:pointer;transition:.25s}
+    .newsletter-popup button:hover{transform:translateY(-2px)}
+    .newsletter-popup .close-newsletter{position:absolute;top:10px;right:10px;cursor:pointer;color:#fff;font-size:18px}
+
+    /* Breadcrumbs */
+    .breadcrumbs{display:flex;gap:8px;align-items:center;margin-bottom:20px;font-size:12px;color:#8fbbe0}
+    .breadcrumbs a{color:#6fb6e5;transition:.25s}
+    .breadcrumbs a:hover{color:#eaf6ff}
+
+    /* Trust badges */
+    .trust-badges{display:flex;gap:12px;justify-content:center;margin-top:20px;flex-wrap:wrap}
+    .badge-item{
+      display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px;font-size:11px;color:#8fbbe0;
+    }
+    .badge-icon{font-size:24px}
+  </style>
+</head>
+<body>
+  <!-- Schema markup para SEO local -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Blue Ocean Seafood",
+    "image": "logo.jpeg",
+    "description": "Importadora y distribuidora de mariscos premium en Guatemala",
+    "telephone": "+502-4865-8088",
+    "email": "ventas@blueoceanseafood.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "GT"
+    },
+    "areaServed": "Guatemala",
+    "priceRange": "$$",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "24"
+    }
+  }
+  </script>
+
+  <script>
+    // Configuración de WhatsApp
+    const WHATSAPP_NUMBER = "50248658088";
+    const WHATSAPP_MSG = encodeURIComponent("Hola Blue Ocean Seafood, me gustaría una cotización.");
+
+    // Google Analytics
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXX'); // Reemplazar con tu ID de GA
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+
+  <script>
+    // Intersection Observer para lazy loading y animaciones
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Lazy load imágenes
+          if (entry.target.dataset.src) {
+            entry.target.src = entry.target.dataset.src;
+            entry.target.removeAttribute('data-src');
+          }
+          // Animaciones al scroll
+          if (entry.target.classList.contains('fade-in')) {
+            entry.target.style.animationDelay = `${entry.target.dataset.delay || 0}ms`;
+          }
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('[data-src], .fade-in').forEach(el => observer.observe(el));
+    });
+  </script>
+
+  <input type="checkbox" id="menu-toggle"/>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <!-- Logo nuevo -->
+        <img src="logo.jpeg" alt="Blue Ocean Seafood"
+             style="height:44px;width:auto;filter:drop-shadow(0 4px 10px rgba(0,0,0,.35));object-fit:contain;">
+        <div>
+          <h1>Blue Ocean Seafood</h1>
+          <small>Importadora de mariscos</small>
+        </div>
+      </div>
+      <label class="menu-btn btn btn-outline" for="menu-toggle">Menú</label>
+      <nav class="nav-links">
+        <a href="#about">Nosotros</a>
+        <a href="#products">Productos</a>
+        <a href="#quality">Calidad</a>
+        <a href="#sourcing">Origen</a>
+        <a href="#testimonials">Clientes</a>
+        <a href="#contact" class="btn">Contactar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO con carrusel -->
+    <section class="hero">
+      <div class="hero-slider">
+        <div class="hero-slide slide-1"></div>
+        <div class="hero-slide slide-2"></div>
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-inner container">
+        <div class="badges">
+          <span class="tag">Importación directa</span>
+          <span class="tag">Calidad certificada</span>
+          <span class="tag">Entrega nacional</span>
+        </div>
+        <h2 class="headline">Mariscos premium con<br/>logística y trazabilidad total</h2>
+        <p class="subtitle">
+          Abastecemos a supermercados, restaurantes y distribuidores con camarón y productos del mar de origen certificado.
+          Servicio confiable, frío garantizado y documentación completa.
+        </p>
+        <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap">
+          <a href="#contact" class="btn">Solicitar cotización</a>
+          <a href="#products" class="btn btn-outline">Ver catálogo</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nosotros -->
+    <section id="about">
+      <div class="container">
+        <h3 class="section-title">Quiénes somos</h3>
+        <p class="section-sub">Tu aliado estratégico en importación de mariscos para Guatemala</p>
+        <div class="features">
+          <div class="card fade-in" data-delay="100">
+            <h3>Cadena de frío</h3>
+            <p>Transporte refrigerado, control de temperatura y monitoreo hasta entrega.</p>
+          </div>
+          <div class="card fade-in" data-delay="200">
+            <h3>Certificaciones</h3>
+            <p>Proveedores con BAP/ASC y procesos HACCP auditados por lote.</p>
+          </div>
+          <div class="card fade-in" data-delay="300">
+            <h3>Acuerdos de volumen</h3>
+            <p>Planificación de compra, precio estable y continuidad de inventario.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Productos -->
+    <section id="products">
+      <div class="container">
+        <div class="breadcrumbs">
+          <a href="#" onclick="scrollToTop()">Inicio</a> / 
+          <span>Productos</span>
+        </div>
+        <h3 class="section-title">Líneas de producto</h3>
+        <p class="section-sub">Opciones para horeca y retail</p>
+
+        <div class="product-grid">
+          <!-- Producto 1: Camarón entero con carrusel -->
+          <article class="card product fade-in" data-delay="100">
+            <div class="camaron-slider" onclick="openLightbox('cajacamaron.jpeg', 'Camarón entero')">
+              <div class="camaron-slide slide-1"></div>
+              <div class="camaron-slide slide-2"></div>
+            </div>
+
+            <div class="info">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+                <strong style="color:#eaf6ff">Camarón entero</strong>
+                <span class="badge">Caja de distintas pesos</span>
+              </div>
+
+              <p style="color:#bcd8ef;margin:0 0 10px">
+                Presentación de caja grande y cajas pequeñas de 4 libras cada una.<br>
+                Tallas disponibles: <strong>20/30</strong>, <strong>30/40</strong>, <strong>50/60</strong>.
+              </p>
+
+              <div style="display:flex;gap:10px;align-items:center">
+                <span class="price">Por cotizar</span>
+                <a href="#contact" class="btn btn-outline" style="padding:8px 14px">Cotizar</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Producto 2: Filetes selectos con carrusel -->
+          <article class="card product fade-in" data-delay="200">
+            <div class="filete-slider" onclick="openLightbox('enfilete.jpeg', 'Filetes selectos')">
+              <div class="filete-slide slide-1"></div>
+              <div class="filete-slide slide-2"></div>
+            </div>
+            <div class="info">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+                <strong style="color:#eaf6ff">Filetes selectos</strong>
+                <span class="badge">Premium</span>
+              </div>
+              <p style="color:#bcd8ef;margin:0 0 10px">
+                Filetes y pescado entero en presentación premium, ideales para horeca y retail.
+              </p>
+              <div style="display:flex;gap:10px;align-items:center">
+                <span class="price">Por cotizar</span>
+                <a href="#contact" class="btn btn-outline" style="padding:8px 14px">Cotizar</a>
+              </div>
+            </div>
+          </article>
+
+        <!-- Producto 3: Jaiba -->
+<article class="card product fade-in" data-delay="300">
+  <img src="jaiba .jpeg" alt="Jaiba fresca Blue Ocean" loading="lazy" onclick="openLightbox('jaiba .jpeg', 'Jaiba fresca')" />
+
+
+  <div class="info">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+      <strong style="color:#eaf6ff">Jaiba</strong>
+      <span class="badge">Pequeña • Mediana • Grande</span>
+    </div>
+
+    <p style="color:#bcd8ef;margin:0 0 10px">
+      Jaiba fresca entera en tallas <strong>pequeña</strong>, <strong>mediana</strong> y <strong>grande</strong>. 
+      Ideal para restaurantes y distribuidores.
+    </p>
+
+    <div style="display:flex;gap:10px;align-items:center">
+      <span class="price">Por cotizar</span>
+      <a href="#contact" class="btn btn-outline" style="padding:8px 14px">Cotizar</a>
+    </div>
+  </div>
+</article>
+
+        </div>
+
+        <!-- Trust badges -->
+        <div class="trust-badges">
+          <div class="badge-item">
+            <div class="badge-icon">🔒</div>
+            <div>SSL Seguro</div>
+          </div>
+          <div class="badge-item">
+            <div class="badge-icon">✓</div>
+            <div>100% Certificado</div>
+          </div>
+          <div class="badge-item">
+            <div class="badge-icon">🚚</div>
+            <div>Entrega Garantizada</div>
+          </div>
+          <div class="badge-item">
+            <div class="badge-icon">💬</div>
+            <div>Soporte 24/7</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Calidad -->
+    <section id="quality">
+      <div class="container split">
+        <div class="card">
+          <h3 style="color:#eaf6ff;margin-top:0">Estándares internacionales</h3>
+          <p style="color:#bcd8ef">Cada embarque con certificados sanitarios, resultados de laboratorio y trazabilidad.</p>
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
+            <div class="card"><strong style="color:#eaf6ff">BAP / ASC</strong><p style="color:#bcd8ef">Buenas prácticas</p></div>
+            <div class="card"><strong style="color:#eaf6ff">HACCP</strong><p style="color:#bcd8ef">Inocuidad y control</p></div>
+            <div class="card"><strong style="color:#eaf6ff">Temp. controlada</strong><p style="color:#bcd8ef">-18°C</p></div>
+            <div class="card"><strong style="color:#eaf6ff">Documentación</strong><p style="color:#bcd8ef">COO, PL, BL</p></div>
+          </div>
+        </div>
+        <div>
+  <video 
+    src="video1.mp4"
+    autoplay
+    muted
+    loop
+    playsinline
+    loading="lazy"
+    style="width:100%;border-radius:18px;box-shadow:var(--shadow-xl);object-fit:cover;">
+  </video>
+</div>
+
+      </div>
+    </section>
+
+    <!-- Origen -->
+    <section id="sourcing">
+      <div class="container split">
+        <div>
+          <h3 class="section-title">Origen</h3>
+          <p class="section-sub">Red de abastecimiento confiable</p>
+          <ul style="color:#bcd8ef;line-height:1.9">
+            <li>Latinoamérica y Centroamérica ecuador</li>
+            <li>Opciones sostenibles certificadas</li>
+          </ul>
+        </div>
+        <div>
+          <img src="logo2.jpeg" alt="Rutas marítimas" style="border-radius:18px;box-shadow:var(--shadow-xl)" loading="lazy"/>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section id="testimonials">
+      <div class="container">
+        <h3 class="section-title">Lo que dicen nuestros clientes</h3>
+        <p class="section-sub">Confianza ganada en cada embarque</p>
+        <div class="testimonials">
+          <div class="testimonial-card fade-in" data-delay="100">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"Excelente calidad y puntualidad. El camarón siempre llega en perfectas condiciones."</p>
+            <div class="author">José García</div>
+            <div class="role">Gerente de compras, Restaurante premium</div>
+          </div>
+          <div class="testimonial-card fade-in" data-delay="200">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"Profesionales serios. Documentación completa y trazabilidad garantizada en cada lote."</p>
+            <div class="author">María López</div>
+            <div class="role">Directora, Cadena de supermercados</div>
+          </div>
+          <div class="testimonial-card fade-in" data-delay="300">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"El mejor proveedor que hemos tenido. Entrega consistente y excelente servicio al cliente."</p>
+            <div class="author">Carlos Méndez</div>
+            <div class="role">Dueño, Distribuidora de mariscos</div>
+          </div>
+        </div>
+
+        <!-- Contadores dinámicos -->
+        <div class="stats-grid">
+          <div class="stat-box fade-in" data-delay="100">
+            <div class="stat-number" data-count="15">0</div>
+            <div class="stat-label">Años de experiencia</div>
+          </div>
+          <div class="stat-box fade-in" data-delay="200">
+            <div class="stat-number" data-count="500">0</div>
+            <div class="stat-label">Toneladas anuales</div>
+          </div>
+          <div class="stat-box fade-in" data-delay="300">
+            <div class="stat-number" data-count="200">0</div>
+            <div class="stat-label">Clientes activos</div>
+          </div>
+          <div class="stat-box fade-in" data-delay="400">
+            <div class="stat-number" data-count="48">0</div>
+            <div class="stat-label">Horas entrega máx</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" style="background:linear-gradient(180deg, rgba(2,8,23,1) 0%, rgba(5,14,30,1) 100%)">
+      <div class="container">
+        <h3 class="section-title">Preguntas frecuentes</h3>
+        <p class="section-sub">Resolvemos tus dudas sobre nuestros productos y servicios</p>
+        <div class="faq-container">
+          <div class="faq-item">
+            <div class="faq-question">¿Cuáles son las tallas disponibles de camarón?</div>
+            <div class="faq-answer">Manejamos tallas comerciales: 20/30, 30/40 y 50/60. Todas certificadas y con presentación en cajas de distintos pesos según necesidad.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">¿Qué garantías tiene el transporte refrigerado?</div>
+            <div class="faq-answer">Transporte con GPS, control de temperatura -18°C continuo, y monitoreo en tiempo real. Enviamos certificado de temperatura en cada embarque.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">¿Cuál es el tiempo mínimo de entrega?</div>
+            <div class="faq-answer">Manejamos entregas nacionales en máximo 48 horas. Para grandes volúmenes, negociamos tiempos especiales según disponibilidad de inventario.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">¿Ofrecen descuentos por volumen?</div>
+            <div class="faq-answer">Sí. Tenemos acuerdos especiales para compras de volumen. Contáctanos para una propuesta personalizada según tu demanda.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">¿Qué documentación incluyen los embarques?</div>
+            <div class="faq-answer">Incluimos: Certificate of Origin, Packing List, Bill of Lading, certificados sanitarios, y resultados de laboratorio en cada lote.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">¿Cómo funciona el proceso de cotización?</div>
+            <div class="faq-answer">Envía tu requerimiento (producto, talla, formato, volumen) y te respondemos en máximo 24 horas con propuesta detallada y presupuesto.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <div class="container cta-box">
+        <div>
+          <h2 style="color:#eaf6ff;margin-top:0">¿Listo para importar con confianza?</h2>
+          <p style="color:#cde8ff;margin-bottom:16px">Envíanos tu requerimiento (producto, calibre, formato, volumen y tiempos) y te compartimos una propuesta a medida.</p>
+          <a href="#contact" class="btn" style="background:#fff;color:#0a3a5a" aria-label="Contactar ventas">Contactar ventas</a>
+        </div>
+        <div>
+          <img src="logo.jpeg" alt="Contenedores refrigerados" style="border-radius:18px;box-shadow:var(--shadow-xl)" loading="lazy"/>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contact">
+      <div class="container split">
+        <div>
+          <h3 class="section-title">Contacto</h3>
+          <p class="section-sub">Hablemos de tu próximo embarque</p>
+          <form class="card" onsubmit="handleFormSubmit(event)">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+              <label style="color:#cde8ff">Nombre<br><input required type="text" placeholder="Tu nombre" aria-label="Tu nombre" style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#eaf6ff"></label>
+              <label style="color:#cde8ff">Empresa<br><input type="text" placeholder="Nombre de empresa" aria-label="Nombre de empresa" style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#eaf6ff"></label>
+              <label style="color:#cde8ff">Correo<br><input required type="email" placeholder="correo@ejemplo.com" aria-label="Correo electrónico" style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#eaf6ff"></label>
+              <label style="color:#cde8ff">Teléfono<br><input type="tel" placeholder="+502 …" aria-label="Número de teléfono" style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#eaf6ff"></label>
+              <label style="grid-column:1/-1;color:#cde8ff">Mensaje<br><textarea rows="4" placeholder="Producto, calibre, formato, volumen…" aria-label="Mensaje" style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#eaf6ff;resize:vertical"></textarea></label>
+            </div>
+            <div style="margin-top:16px;display:flex;gap:12px;align-items:center">
+              <button class="btn" type="submit" aria-label="Enviar formulario">Enviar</button>
+              <span style="color:#cde8ff;font-weight:600">* Este formulario abre WhatsApp</span>
+            </div>
+          </form>
+        </div>
+        <div class="card">
+          <h3 style="color:#eaf6ff;margin-top:0">Información</h3>
+          <ul style="list-style:none;padding:0;margin:0;color:#cde8ff;line-height:2">
+            <li>📧 ventas@blueoceanseafood.com</li>
+            <li>📱 +502 4865-8088</li>
+            <li>📦 Importación | Distribución | Retail</li>
+            <li>📍 Guatemala</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot-grid">
+      <div style="display:flex;align-items:center;gap:30px">
+        <img src="logo.jpeg" alt="Blue Ocean Seafood" style="height:50px;width:auto;object-fit:contain" loading="lazy">
+        <div>
+          <strong style="color:#eaf6ff">Blue Ocean Seafood</strong>
+          <small style="display:block;color:#b8d8f3">Importadora de mariscos</small>
+          <div class="social-links">
+            <a href="https://wa.me/50248658088" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371 0-.57 0-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-9.746 9.798c0 5.411 4.406 9.857 9.857 9.857 2.619 0 5.077-.929 7.01-2.626l.36-.214 3.75.971-1.925-3.816.215.36c1.89-2.196 3.022-5.074 3.022-8.15 0-5.45-4.406-9.857-9.857-9.857Z"/></svg>
+            </a>
+            <a href="mailto:ventas@blueoceanseafood.com" aria-label="Correo electrónico" title="Enviar email">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </a>
+            <a href="https://www.google.com/maps/search/Blue+Ocean+Seafood+Guatemala" target="_blank" rel="noopener" aria-label="Ubicación" title="Ver en mapas">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <strong>Secciones</strong>
+        <ul style="list-style:none;padding:0;margin-top:8px;line-height:2">
+          <li><a href="#about" aria-label="Ir a Nosotros">Nosotros</a></li>
+          <li><a href="#products" aria-label="Ir a Productos">Productos</a></li>
+          <li><a href="#quality" aria-label="Ir a Calidad">Calidad</a></li>
+          <li><a href="#sourcing" aria-label="Ir a Origen">Origen</a></li>
+          <li><a href="#testimonials" aria-label="Ir a Clientes">Clientes</a></li>
+          <li><a href="#contact" aria-label="Ir a Contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>Documentos</strong>
+        <ul style="list-style:none;padding:0;margin-top:8px;line-height:2">
+          <li><a href="#">Política de calidad</a></li>
+          <li><a href="#">Términos y condiciones</a></li>
+          <li><a href="#">Aviso de privacidad</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botón flotante WhatsApp -->
+  <a class="whatsapp-fab" id="whatsappFab" href="#" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M19.11 17.07c-.26-.13-1.52-.76-1.75-.85-.24-.09-.41-.13-.58.13-.17.26-.67.85-.82 1.02-.15.17-.3.2-.56.07-.26-.13-1.08-.4-2.06-1.28-.76-.68-1.28-1.52-1.43-1.77-.15-.26-.02-.4.11-.53.11-.11.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.06-.13-.58-1.39-.8-1.9-.21-.51-.43-.44-.58-.45-.15-.01-.32-.01-.49-.01-.17 0-.45.06-.68.32-.24.26-.89.87-.89 2.14 0 1.26.92 2.48 1.05 2.65.13.17 1.82 2.77 4.42 3.89.62.27 1.11.43 1.49.55.62.2 1.18.17 1.62.1.49-.07 1.52-.62 1.73-1.21.21-.6.21-1.11.15-1.21-.06-.1-.24-.16-.5-.29zM16.06 4C9.86 4 4.84 9.02 4.84 15.22c0 2.74.91 5.27 2.45 7.3L6 28l5.61-1.47c1.97 1.08 4.23 1.7 6.61 1.7 6.2 0 11.22-5.02 11.22-11.22S22.26 4 16.06 4z"/></svg>
+  </a>
+
+  <!-- Lightbox para galería -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+      <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+      <img class="lightbox-img" id="lightboxImg" src="" alt="">
+    </div>
+  </div>
+
+  <!-- Pop-up Newsletter -->
+  <div class="newsletter-popup" id="newsletterPopup" style="display:none">
+    <div class="close-newsletter" onclick="closeNewsletter()">✕</div>
+    <h4>Suscríbete a noticias</h4>
+    <p>Recibe actualizaciones de nuestros productos y ofertas especiales.</p>
+    <input type="email" id="newsletterEmail" placeholder="Tu correo">
+    <button onclick="subscribeNewsletter()">Suscribirse</button>
+  </div>
+
+  <script>
+    // Vincular botón flotante con tu número
+    const fab = document.getElementById('whatsappFab');
+    if (fab) {
+      fab.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MSG}`;
+    }
+
+    // Lightbox
+    function openLightbox(src, alt) {
+      const lightbox = document.getElementById('lightbox');
+      const img = document.getElementById('lightboxImg');
+      img.src = src;
+      img.alt = alt;
+      lightbox.classList.add('active');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+    }
+
+    // Cerrar lightbox al hacer clic fuera
+    document.getElementById('lightbox')?.addEventListener('click', function(e) {
+      if (e.target === this) closeLightbox();
+    });
+
+    // Tecla ESC para cerrar lightbox
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // Newsletter popup (mostrar después de 10 segundos)
+    setTimeout(() => {
+      const popup = document.getElementById('newsletterPopup');
+      if (popup) popup.style.display = 'block';
+    }, 10000);
+
+    function closeNewsletter() {
+      document.getElementById('newsletterPopup').style.display = 'none';
+      localStorage.setItem('newsletterDismissed', 'true');
+    }
+
+    function subscribeNewsletter() {
+      const email = document.getElementById('newsletterEmail').value;
+      if (email) {
+        alert('¡Gracias por suscribirse! Revisa tu correo para confirmar.');
+        closeNewsletter();
+      }
+    }
+
+    // No mostrar newsletter si ya fue cerrada
+    if (localStorage.getItem('newsletterDismissed')) {
+      document.getElementById('newsletterPopup').style.display = 'none';
+    }
+
+    // Contadores dinámicos
+    function countUp(element) {
+      const target = parseInt(element.dataset.count);
+      const duration = 2000;
+      const increment = target / (duration / 50);
+      let current = 0;
+
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          element.textContent = target;
+          clearInterval(timer);
+        } else {
+          element.textContent = Math.floor(current);
+        }
+      }, 50);
+    }
+
+    // Activar contadores cuando son visibles
+    const statBoxes = document.querySelectorAll('.stat-number');
+    const statObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.hasAttribute('data-counted')) {
+          countUp(entry.target);
+          entry.target.setAttribute('data-counted', 'true');
+          statObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    statBoxes.forEach(box => statObserver.observe(box));
+
+    // FAQ colapsable
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', function() {
+        const faqItem = this.parentElement;
+        faqItem.classList.toggle('active');
+      });
+    });
+
+    // Manejar envío del formulario
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      const form = event.target;
+      const nombre = form.querySelector('input[type="text"]').value;
+      const empresa = form.querySelectorAll('input[type="text"]')[1].value;
+      const email = form.querySelector('input[type="email"]').value;
+      const telefono = form.querySelector('input[type="tel"]').value;
+      const mensaje = form.querySelector('textarea').value;
+      
+      // Validar email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert('Por favor ingresa un correo válido');
+        return;
+      }
+      
+      // Crear mensaje con información del formulario
+      const textMsg = encodeURIComponent(
+        `*Cotización desde web*\n\n` +
+        `Nombre: ${nombre}\n` +
+        `Empresa: ${empresa}\n` +
+        `Email: ${email}\n` +
+        `Teléfono: ${telefono}\n\n` +
+        `Mensaje:\n${mensaje}`
+      );
+      
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${textMsg}`, '_blank');
+      form.reset();
+    }
+
+    // Scroll suave
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({behavior: 'smooth', block: 'start'});
+        }
+      });
+    });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
+
