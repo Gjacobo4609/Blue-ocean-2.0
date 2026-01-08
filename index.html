@@ -364,7 +364,7 @@
     .lightbox.active{display:grid}
     .lightbox-content{position:relative;max-width:90vw;max-height:90vh}
     .lightbox-img{width:100%;height:100%;object-fit:contain}
-    .lightbox-close{position:absolute;top:20px;right:20px;width:40px;height:40px;background:rgba(255,255,255,.2);border:none;color:#fff;font-size:24px;cursor:pointer;border-radius:50%;z-index:101;transition:.25s}
+    .lightbox-close{position:absolute;top:20px;right:20px;width:40px;height:40px;background:rgba(255,255,255,.2);border:none;color:#fff;font-size:24px;cursor:pointer;border-radius:50%;z-index:101;transition:transform .2s ease,background .2s ease}
     .lightbox-close:hover{background:rgba(255,255,255,.3)}
     .product img{cursor:pointer}
 
@@ -407,7 +407,8 @@
     "email": "ventas@blueoceanseafood.com",
     "address": {
       "@type": "PostalAddress",
-      "addressCountry": "GT"
+      "addressCountry": "GT",
+      "addressLocality": "Guatemala City"
     },
     "areaServed": "Guatemala",
     "priceRange": "$$",
@@ -421,16 +422,21 @@
 
   <script>
     // Configuración de WhatsApp
-    const WHATSAPP_NUMBER = "50248658088";
+    const WHATSAPP_NUMBER = "50248658088"; // sin signos
     const WHATSAPP_MSG = encodeURIComponent("Hola Blue Ocean Seafood, me gustaría una cotización.");
 
-    // Google Analytics
+    // Google Analytics (reemplazar G-XXXXXXX por tu ID real)
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXX'); // Reemplazar con tu ID de GA
+    function gtag(){dataLayer.push(arguments);}    
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    // Solo inicializar si se reemplaza el ID
+    if (typeof gtag === 'function') {
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXX');
+    }
+  </script>
 
   <script>
     // Intersection Observer para lazy loading y animaciones
@@ -447,7 +453,7 @@
             entry.target.src = entry.target.dataset.src;
             entry.target.removeAttribute('data-src');
           }
-          // Animaciones al scroll
+          // Animaciones al scroll (usar data-delay si existe)
           if (entry.target.classList.contains('fade-in')) {
             entry.target.style.animationDelay = `${entry.target.dataset.delay || 0}ms`;
           }
@@ -466,15 +472,14 @@
     <div class="container nav">
       <div class="brand">
         <!-- Logo nuevo -->
-        <img src="logo.jpeg" alt="Blue Ocean Seafood"
-             style="height:44px;width:auto;filter:drop-shadow(0 4px 10px rgba(0,0,0,.35));object-fit:contain;">
+        <img src="logo.jpeg" alt="Blue Ocean Seafood" height="44" style="width:auto;filter:drop-shadow(0 4px 10px rgba(0,0,0,.35));object-fit:contain;">
         <div>
           <h1>Blue Ocean Seafood</h1>
           <small>Importadora de mariscos</small>
         </div>
       </div>
       <label class="menu-btn btn btn-outline" for="menu-toggle">Menú</label>
-      <nav class="nav-links">
+      <nav class="nav-links" aria-label="Menú principal">
         <a href="#about">Nosotros</a>
         <a href="#products">Productos</a>
         <a href="#quality">Calidad</a>
@@ -487,19 +492,19 @@
 
   <main>
     <!-- HERO con carrusel -->
-    <section class="hero">
-      <div class="hero-slider">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-slider" aria-hidden="true">
         <div class="hero-slide slide-1"></div>
         <div class="hero-slide slide-2"></div>
       </div>
-      <div class="hero-overlay"></div>
+      <div class="hero-overlay" aria-hidden="true"></div>
       <div class="hero-inner container">
         <div class="badges">
           <span class="tag">Importación directa</span>
           <span class="tag">Calidad certificada</span>
           <span class="tag">Entrega nacional</span>
         </div>
-        <h2 class="headline">Mariscos premium con<br/>logística y trazabilidad total</h2>
+        <h2 id="hero-title" class="headline">Mariscos premium con<br/>logística y trazabilidad total</h2>
         <p class="subtitle">
           Abastecemos a supermercados, restaurantes y distribuidores con camarón y productos del mar de origen certificado.
           Servicio confiable, frío garantizado y documentación completa.
@@ -537,7 +542,7 @@
     <section id="products">
       <div class="container">
         <div class="breadcrumbs">
-          <a href="#" onclick="scrollToTop()">Inicio</a> / 
+          <a href="#" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'})">Inicio</a> / 
           <span>Productos</span>
         </div>
         <h3 class="section-title">Líneas de producto</h3>
@@ -546,7 +551,7 @@
         <div class="product-grid">
           <!-- Producto 1: Camarón entero con carrusel -->
           <article class="card product fade-in" data-delay="100">
-            <div class="camaron-slider" onclick="openLightbox('cajacamaron.jpeg', 'Camarón entero')">
+            <div class="camaron-slider" role="img" aria-label="Camarón entero" onclick="openLightbox('cajacamaron.jpeg', 'Camarón entero')">
               <div class="camaron-slide slide-1"></div>
               <div class="camaron-slide slide-2"></div>
             </div>
@@ -554,7 +559,7 @@
             <div class="info">
               <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
                 <strong style="color:#eaf6ff">Camarón entero</strong>
-                <span class="badge">Caja de distintas pesos</span>
+                <span class="badge">Caja de distintos pesos</span>
               </div>
 
               <p style="color:#bcd8ef;margin:0 0 10px">
@@ -571,7 +576,7 @@
 
           <!-- Producto 2: Filetes selectos con carrusel -->
           <article class="card product fade-in" data-delay="200">
-            <div class="filete-slider" onclick="openLightbox('enfilete.jpeg', 'Filetes selectos')">
+            <div class="filete-slider" role="img" aria-label="Filetes selectos" onclick="openLightbox('enfilete.jpeg', 'Filetes selectos')">
               <div class="filete-slide slide-1"></div>
               <div class="filete-slide slide-2"></div>
             </div>
@@ -592,7 +597,7 @@
 
         <!-- Producto 3: Jaiba -->
 <article class="card product fade-in" data-delay="300">
-  <img src="jaiba .jpeg" alt="Jaiba fresca Blue Ocean" loading="lazy" onclick="openLightbox('jaiba .jpeg', 'Jaiba fresca')" />
+  <img src="jaiba.jpeg" alt="Jaiba fresca Blue Ocean" loading="lazy" onclick="openLightbox('jaiba.jpeg', 'Jaiba fresca')" />
 
 
   <div class="info">
@@ -672,7 +677,7 @@
           <h3 class="section-title">Origen</h3>
           <p class="section-sub">Red de abastecimiento confiable</p>
           <ul style="color:#bcd8ef;line-height:1.9">
-            <li>Latinoamérica y Centroamérica ecuador</li>
+            <li>Latinoamérica y Centroamérica (incluye Ecuador)</li>
             <li>Opciones sostenibles certificadas</li>
           </ul>
         </div>
@@ -786,23 +791,23 @@
           <p class="section-sub">Hablemos de tu próximo embarque</p>
           <form class="card" onsubmit="handleFormSubmit(event)">
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-              <label style="color:#cde8ff">Nombre<br><input required type="text" placeholder="Tu nombre" aria-label="Tu nombre" style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#eaf6ff"></label>
-              <label style="color:#cde8ff">Empresa<br><input type="text" placeholder="Nombre de empresa" aria-label="Nombre de empresa" style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#eaf6ff"></label>
-              <label style="color:#cde8ff">Correo<br><input required type="email" placeholder="correo@ejemplo.com" aria-label="Correo electrónico" style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#eaf6ff"></label>
-              <label style="color:#cde8ff">Teléfono<br><input type="tel" placeholder="+502 …" aria-label="Número de teléfono" style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#eaf6ff"></label>
-              <label style="grid-column:1/-1;color:#cde8ff">Mensaje<br><textarea rows="4" placeholder="Producto, calibre, formato, volumen…" aria-label="Mensaje" style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#eaf6ff;resize:vertical"></textarea></label>
+              <label style="color:#cde8ef">Nombre<br><input required type="text" name="nombre" placeholder="Tu nombre" aria-label="Tu nombre" style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:transparent;color:#fff"></label>
+              <label style="color:#cde8ef">Empresa<br><input type="text" name="empresa" placeholder="Nombre de empresa" aria-label="Nombre de empresa" style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:transparent;color:#fff"></label>
+              <label style="color:#cde8ef">Correo<br><input required type="email" name="email" placeholder="correo@ejemplo.com" aria-label="Correo electrónico" style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:transparent;color:#fff"></label>
+              <label style="color:#cde8ef">Teléfono<br><input type="tel" name="telefono" placeholder="+502 …" aria-label="Número de teléfono" style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:transparent;color:#fff"></label>
+              <label style="grid-column:1/-1;color:#cde8ef">Mensaje<br><textarea name="mensaje" rows="4" placeholder="Producto, calibre, formato, volumen…" aria-label="Mensaje" style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:transparent;color:#fff"></textarea></label>
             </div>
             <div style="margin-top:16px;display:flex;gap:12px;align-items:center">
               <button class="btn" type="submit" aria-label="Enviar formulario">Enviar</button>
-              <span style="color:#cde8ff;font-weight:600">* Este formulario abre WhatsApp</span>
+              <span style="color:#cde8ef;font-weight:600">* Este formulario abre WhatsApp</span>
             </div>
           </form>
         </div>
         <div class="card">
           <h3 style="color:#eaf6ff;margin-top:0">Información</h3>
-          <ul style="list-style:none;padding:0;margin:0;color:#cde8ff;line-height:2">
-            <li>📧 ventas@blueoceanseafood.com</li>
-            <li>📱 +502 4865-8088</li>
+          <ul style="list-style:none;padding:0;margin:0;color:#cde8ef;line-height:2">
+            <li>📧 <a href="mailto:ventas@blueoceanseafood.com">ventas@blueoceanseafood.com</a></li>
+            <li>📱 <a href="https://wa.me/50248658088" target="_blank" rel="noopener noreferrer">+502 4865-8088</a></li>
             <li>📦 Importación | Distribución | Retail</li>
             <li>📍 Guatemala</li>
           </ul>
@@ -819,14 +824,15 @@
           <strong style="color:#eaf6ff">Blue Ocean Seafood</strong>
           <small style="display:block;color:#b8d8f3">Importadora de mariscos</small>
           <div class="social-links">
-            <a href="https://wa.me/50248658088" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371 0-.57 0-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-9.746 9.798c0 5.411 4.406 9.857 9.857 9.857 2.619 0 5.077-.929 7.01-2.626l.36-.214 3.75.971-1.925-3.816.215.36c1.89-2.196 3.022-5.074 3.022-8.15 0-5.45-4.406-9.857-9.857-9.857Z"/></svg>
+            <a href="https://wa.me/50248658088" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp">
+              <!-- simple WhatsApp circle icon -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/></svg>
             </a>
             <a href="mailto:ventas@blueoceanseafood.com" aria-label="Correo electrónico" title="Enviar email">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6-10-6"/></svg>
             </a>
-            <a href="https://www.google.com/maps/search/Blue+Ocean+Seafood+Guatemala" target="_blank" rel="noopener" aria-label="Ubicación" title="Ver en mapas">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <a href="https://www.google.com/maps/search/Blue+Ocean+Seafood+Guatemala" target="_blank" rel="noopener noreferrer" aria-label="Ubicación" title="Ver en mapas">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             </a>
           </div>
         </div>
@@ -854,24 +860,24 @@
   </footer>
 
   <!-- Botón flotante WhatsApp -->
-  <a class="whatsapp-fab" id="whatsappFab" href="#" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
-    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M19.11 17.07c-.26-.13-1.52-.76-1.75-.85-.24-.09-.41-.13-.58.13-.17.26-.67.85-.82 1.02-.15.17-.3.2-.56.07-.26-.13-1.08-.4-2.06-1.28-.76-.68-1.28-1.52-1.43-1.77-.15-.26-.02-.4.11-.53.11-.11.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.06-.13-.58-1.39-.8-1.9-.21-.51-.43-.44-.58-.45-.15-.01-.32-.01-.49-.01-.17 0-.45.06-.68.32-.24.26-.89.87-.89 2.14 0 1.26.92 2.48 1.05 2.65.13.17 1.82 2.77 4.42 3.89.62.27 1.11.43 1.49.55.62.2 1.18.17 1.62.1.49-.07 1.52-.62 1.73-1.21.21-.6.21-1.11.15-1.21-.06-.1-.24-.16-.5-.29zM16.06 4C9.86 4 4.84 9.02 4.84 15.22c0 2.74.91 5.27 2.45 7.3L6 28l5.61-1.47c1.97 1.08 4.23 1.7 6.61 1.7 6.2 0 11.22-5.02 11.22-11.22S22.26 4 16.06 4z"/></svg>
+  <a class="whatsapp-fab" id="whatsappFab" href="#" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="#25D366"/><path d="M12 12c1 1 2 1 3 1s2 0 3-1" stroke="#fff" stroke-width="1.5" fill="none"/></svg>
   </a>
 
   <!-- Lightbox para galería -->
-  <div class="lightbox" id="lightbox">
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="lightbox-content">
-      <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+      <button class="lightbox-close" onclick="closeLightbox()" aria-label="Cerrar imagen">✕</button>
       <img class="lightbox-img" id="lightboxImg" src="" alt="">
     </div>
   </div>
 
   <!-- Pop-up Newsletter -->
-  <div class="newsletter-popup" id="newsletterPopup" style="display:none">
-    <div class="close-newsletter" onclick="closeNewsletter()">✕</div>
+  <div class="newsletter-popup" id="newsletterPopup" style="display:none" aria-hidden="true">
+    <div class="close-newsletter" onclick="closeNewsletter()" role="button" aria-label="Cerrar">✕</div>
     <h4>Suscríbete a noticias</h4>
     <p>Recibe actualizaciones de nuestros productos y ofertas especiales.</p>
-    <input type="email" id="newsletterEmail" placeholder="Tu correo">
+    <input type="email" id="newsletterEmail" placeholder="Tu correo" aria-label="Correo para newsletter">
     <button onclick="subscribeNewsletter()">Suscribirse</button>
   </div>
 
@@ -887,12 +893,17 @@
       const lightbox = document.getElementById('lightbox');
       const img = document.getElementById('lightboxImg');
       img.src = src;
-      img.alt = alt;
+      img.alt = alt || '';
       lightbox.classList.add('active');
+      lightbox.setAttribute('aria-hidden', 'false');
     }
 
     function closeLightbox() {
-      document.getElementById('lightbox').classList.remove('active');
+      const lightbox = document.getElementById('lightbox');
+      const img = document.getElementById('lightboxImg');
+      lightbox.classList.remove('active');
+      lightbox.setAttribute('aria-hidden', 'true');
+      img.src = '';
     }
 
     // Cerrar lightbox al hacer clic fuera
@@ -905,35 +916,47 @@
       if (e.key === 'Escape') closeLightbox();
     });
 
-    // Newsletter popup (mostrar después de 10 segundos)
-    setTimeout(() => {
+    // Newsletter popup (mostrar después de 10 segundos) — solo si no fue cerrado
+    function showNewsletterPopup() {
       const popup = document.getElementById('newsletterPopup');
-      if (popup) popup.style.display = 'block';
-    }, 10000);
+      if (!popup) return;
+      if (localStorage.getItem('newsletterDismissed')) return;
+      popup.style.display = 'block';
+      popup.setAttribute('aria-hidden', 'false');
+    }
+
+    let newsletterTimer = setTimeout(showNewsletterPopup, 10000);
 
     function closeNewsletter() {
-      document.getElementById('newsletterPopup').style.display = 'none';
+      const popup = document.getElementById('newsletterPopup');
+      if (!popup) return;
+      popup.style.display = 'none';
+      popup.setAttribute('aria-hidden', 'true');
       localStorage.setItem('newsletterDismissed', 'true');
+      clearTimeout(newsletterTimer);
     }
 
     function subscribeNewsletter() {
-      const email = document.getElementById('newsletterEmail').value;
-      if (email) {
-        alert('¡Gracias por suscribirse! Revisa tu correo para confirmar.');
-        closeNewsletter();
+      const emailInput = document.getElementById('newsletterEmail');
+      if (!emailInput) return;
+      const email = emailInput.value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert('Por favor ingresa un correo válido');
+        return;
       }
-    }
-
-    // No mostrar newsletter si ya fue cerrada
-    if (localStorage.getItem('newsletterDismissed')) {
-      document.getElementById('newsletterPopup').style.display = 'none';
+      // Aquí podrías llamar a una API para suscribir
+      alert('¡Gracias por suscribirse! Revisa tu correo para confirmar.');
+      closeNewsletter();
     }
 
     // Contadores dinámicos
     function countUp(element) {
-      const target = parseInt(element.dataset.count);
+      const target = parseInt(element.dataset.count, 10) || 0;
       const duration = 2000;
-      const increment = target / (duration / 50);
+      const stepTime = 50;
+      const steps = Math.max(Math.round(duration / stepTime), 1);
+      const increment = target / steps;
       let current = 0;
 
       const timer = setInterval(() => {
@@ -944,7 +967,7 @@
         } else {
           element.textContent = Math.floor(current);
         }
-      }, 50);
+      }, stepTime);
     }
 
     // Activar contadores cuando son visibles
@@ -973,11 +996,11 @@
     function handleFormSubmit(event) {
       event.preventDefault();
       const form = event.target;
-      const nombre = form.querySelector('input[type="text"]').value;
-      const empresa = form.querySelectorAll('input[type="text"]')[1].value;
-      const email = form.querySelector('input[type="email"]').value;
-      const telefono = form.querySelector('input[type="tel"]').value;
-      const mensaje = form.querySelector('textarea').value;
+      const nombre = (form.querySelector('input[name="nombre"]') || {}).value || '';
+      const empresa = (form.querySelector('input[name="empresa"]') || {}).value || '';
+      const email = (form.querySelector('input[name="email"]') || {}).value || '';
+      const telefono = (form.querySelector('input[name="telefono"]') || {}).value || '';
+      const mensaje = (form.querySelector('textarea[name="mensaje"]') || {}).value || '';
       
       // Validar email
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -1000,21 +1023,12 @@
       form.reset();
     }
 
-    // Scroll suave
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({behavior: 'smooth', block: 'start'});
-        }
-      });
-    });
-
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Mostrar/ocultar newsletter si ya fue dismissed (comprobación temprana)
+    if (localStorage.getItem('newsletterDismissed')) {
+      const popup = document.getElementById('newsletterPopup');
+      if (popup) popup.style.display = 'none';
+      clearTimeout(newsletterTimer);
     }
   </script>
 </body>
 </html>
-
